@@ -1,0 +1,9 @@
+<configuration scan="false">
+    <contextName>logback</contextName>
+    <property name="log.path" value="./logs"/>
+    <property name="log.pattern" value="%-4relative \\\[%thread\\\] %-5level %logger{35} - %msg %n"/>
+
+    <springProperty scope="context" name="profile" source="spring.profiles.active" defaultValue="dev"/>
+    <logger level="TRACE" name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <include resource="log/logback-${profile}.xml"/>
+</configuration>

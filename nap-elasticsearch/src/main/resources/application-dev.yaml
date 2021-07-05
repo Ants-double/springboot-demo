@@ -1,0 +1,69 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        max-age: 6000000
+      timeout: 6000000
+# MyBatis Config properties
+mybatis:
+  type-aliases-package: com.ants.furun.sale_white_board.beans
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+spring:
+  application:
+    name: nap
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.15.208:3309/sale_management?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+      username: root
+      password: 456123
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  session:
+    store-type: none
+    timeout: 6000000
+  servlet:
+    multipart:
+      max-request-size: 500MB
+      max-file-size: 500MB
+
+  # redis 配置
+  redis:
+    database: 0
+    cluster:
+      max-redirects: 3
+      nodes:
+        - 192.168.15.208:7001
+        - 192.168.15.208:7002
+        - 192.168.15.208:7003
+        - 192.168.15.208:7004
+        - 192.168.15.208:7005
+        - 192.168.15.208:7006
+
+    #password: 1234
+    lettuce:
+      pool:
+        max-active: 1000
+        max-wait: -1
+        max-idle: 10
+        min-idle: 5
+    timeout: 3000
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+
+
+
+# elasticsearch
+
