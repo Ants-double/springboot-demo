@@ -1,0 +1,27 @@
+server:
+  port: 8088
+  servlet:
+    context-path: "/ants"
+
+
+
+spring:
+  kafka:
+
+    bootstrap-servers: 192.168.15.207:9092,192.168.15.207:9093,192.168.15.207:9094
+    producer:
+      acks: all
+      transaction-id-prefix: tx
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: groupA
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-commit-interval: 1000
+      enable-auto-commit: true
+
+
+
+
+
