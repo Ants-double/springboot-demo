@@ -1,0 +1,34 @@
+server:
+  port: 8889
+
+spring:
+  # redis 配置
+  redis:
+    connect-timeout: 5000
+    database: 0
+    cluster:
+      max-redirects: 3
+      nodes:
+        - 192.168.16.104:7001
+        - 192.168.16.104:7002
+        - 192.168.16.104:7003
+        - 192.168.16.104:7004
+        - 192.168.16.104:7005
+        - 192.168.16.104:7006
+
+    #password: 1234
+    lettuce:
+      cluster:
+        refresh:
+          adaptive: true
+          period: 20
+      pool:
+        max-active: 10
+        max-wait: -1
+        max-idle: 30
+        min-idle: 10
+    timeout: 5000
+  data:
+    redis:
+      repositories:
+        enabled: false
