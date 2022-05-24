@@ -1,0 +1,15 @@
+<configuration scan="false">
+    <contextName>logback</contextName>
+    <property name="log.path" value="../.././logs"/>
+    <property name="log.pattern" value="%-4relative \\\[%thread\\\] %-5level %logger{35} - %msg %n"/>
+
+
+    <springProperty scope="context" name="appName" source="spring.application.name" defaultValue="ants-samples"/>
+    <springProperty scope="context" name="profile" source="spring.profiles.active" defaultValue="dev"/>
+    <logger name="springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator" level="OFF" additivity="false"/>
+    <logger level="TRACE" name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <logger name="org.springframework.data.elasticsearch.client.WIRE" level="trace"/>
+    <logger name="logging.level.org.springframework.messaging" level="debug"/>
+
+    <include resource="log/logback-${profile}.xml"/>
+</configuration>
