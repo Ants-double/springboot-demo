@@ -21,7 +21,7 @@
         <target.level>1.8</target.level>
         <spring-boot-dependencies.version>2.7.0</spring-boot-dependencies.version>
         <skip_maven_deploy>true</skip_maven_deploy>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <junit.api.version>5.8.0</junit.api.version>
         <dubbo.version>3.0.8</dubbo.version>
     </properties>
