@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
@@ -120,15 +122,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.accessDeniedHandler(loginUserAccessDeniedHandler)
 
 				// 登入 //允许所有用户
-				.and().formLogin().loginProcessingUrl("/user/login").usernameParameter("userName")
-				.passwordParameter("verification").successForwardUrl("/user/success").permitAll()
+				.and().formLogin().loginProcessingUrl("/hello/login").usernameParameter("userName")
+				.passwordParameter("password").successForwardUrl("/hello/get").permitAll()
 				//登录成功处理逻辑
 				.successHandler(loginSuccessHandler)
 				//登录失败处理逻辑
 				.failureHandler(loginFailureHandler)
 				// 登出//允许所有用户
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/loginOut"))
-				.logoutSuccessUrl("/index.html").deleteCookies("auth_code","JSESSIONID","ForeinSessionID")
+				.logoutSuccessUrl("/index.html").deleteCookies("auth_code","JSESSIONID","SessionID")
 				.logoutUrl("/user/loginOut")
 				.clearAuthentication(true)
 				.invalidateHttpSession(true)
@@ -148,12 +150,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.and()
 				.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-				.invalidSessionUrl("/user/force_login")
+				.invalidSessionUrl("/hello/force_login")
 
 				//同一账号同时登录最大用户数
 				.maximumSessions(1)
 				.maxSessionsPreventsLogin(false)
-				.expiredUrl("/user/force_login")
+				.expiredUrl("/hello/force_login")
 				//.sessionRegistry(sessionRegistry)
 				// 顶号处理
 
@@ -169,7 +171,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/configuration/security",
 			"/swagger-ui.html",
 			"/webjars/**",
-			"/user/verification",
-			"/user/login"
+			"/hello/force_login",
+			"/hello/login"
 	};
 }

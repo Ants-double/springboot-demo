@@ -21,6 +21,6 @@ import java.io.IOException;
 public class LoginFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        ServletUtils.render(request,response, exception.getMessage());
+        ServletUtils.render(request,response, "用户名密码错误");
     }
 }
