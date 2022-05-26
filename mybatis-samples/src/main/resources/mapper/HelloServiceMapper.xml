@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ants.mybatis.samples.mapper.HelloServiceMapper">
+
+    <resultMap id="helloMapResult" type="com.ants.mybatis.samples.pojo.Hello">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+    <sql id="helloSql">
+        `id`,`name`
+    </sql>
+    <insert id="addHello" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO  `hello`(`name`) VALUES (#{name});
+    </insert>
+    <select id="getHello" resultMap="helloMapResult">
+        select
+        <include refid="helloSql"></include>
+        from hello
+        <where>
+            <if test="id!=null and id != ''">
+                id =#{id}
+            </if>
+        </where>
+    </select>
+</mapper>

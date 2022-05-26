@@ -1,0 +1,50 @@
+server:
+  port: 8889
+
+
+# MyBatis Config properties
+mybatis:
+  type-aliases-package: com.ants.mybatis.samples.pojo
+  mapper-locations: classpath:mapper/*.xml,classpath*:/mapper/*/*.xml
+  configuration:
+    #log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+# Spring boot application
+spring:
+  application:
+    name: mybatis-samples
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.16.104:3309/hello?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+      username: root
+      password: 456123
+      initial-size: 5
+      min-idle: 10
+      max-active: 30
+      test-on-borrow: false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      max-wait: 60000
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123456
+        allow: 192.168.0.111
+        url-pattern: /druid/*
+        enabled: true
+      test-on-return: false
+      pool-prepared-statements: false
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      filters: config,wall,stat
+      web-stat-filter:
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+    type: com.alibaba.druid.pool.DruidDataSource
+
