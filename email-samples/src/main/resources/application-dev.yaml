@@ -1,0 +1,10 @@
+server:
+  port: 8889
+spring:
+  mail:
+    host: smtp.126.com
+    protocol: smtp
+    default-encoding: utf-8
+    port: 25
+    username: liyangyang0808@126.com
+    password: -----****----
