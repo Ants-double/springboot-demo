@@ -1,0 +1,10 @@
+server:
+  port: 8889
+  tomcat:
+    relaxed-query-chars: '<,>,\,^,`,|,{,},[,]'
+
+ants:
+  dirPath: E:/work/filespace/
+  pathFlag: "\\"
+
+
