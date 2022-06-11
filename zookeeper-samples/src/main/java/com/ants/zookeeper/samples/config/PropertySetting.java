@@ -42,6 +42,8 @@ public class PropertySetting {
 	@Resource
 	private ConfigurableApplicationContext applicationContext;
 
+	
+
 	@Resource
 	private CuratorFramework curatorFramework;
 
