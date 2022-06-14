@@ -45,6 +45,7 @@ public class KafkaProducer {
 
         log.info("准备发送消息为：{}",obj2String);
 
+
         // 发送消息
         ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(TOPIC_TEST1,obj);
 
